@@ -155,11 +155,7 @@ class Sheet {
 	}
 	cell(x, y, r = true) {
 		var c = new Sheet(1, 1);
-		if (r = true) {
-			c.sheet[0][0] = this.sheet[y-1][x-1];
-		} else {
-			c.sheet[0][0] = this.sheet[y][x];
-		}
+		c.sheet[0][0] = r ? this.sheet[y-1][x-1] : this.sheet[y][x];
 		return c;
 	}
 	hor(r, x1, x2, t = '') {
@@ -267,8 +263,8 @@ class Sheet {
 }
 var sheet = new Sheet(15,15);
 function colorSheet() {
-	sheet.row(1).color('#000000');
-	sheet.column(1).color('#000000');
+	sheet.row(1).changeType();
+	sheet.column(1).changeType();
 	var hor = [
 		[3, 3, 7],
 		[3, 11, 3],
@@ -307,6 +303,17 @@ function colorSheet() {
 	for (var c in cell) {
 		c = cell[c];
 		sheet.cell(c[0], c[1]).changeType();
+	}
+	sheet.cell(15, 10).changeType('special');
+	sheet.cell(12, 15).changeType('special');
+	for (var row in sheet.sheet) {
+		for (var column in sheet.sheet[row]) {
+			var c = sheet.sheet[row][column];
+			if (c.type === 'plain') {
+				var newType = row%2 === column%2 ? 'road2' : 'road1';
+				sheet.cell(column, row, false).changeType(newType);
+			}
+		}
 	}
 }
 colorSheet();
