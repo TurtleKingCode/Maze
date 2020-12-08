@@ -317,3 +317,23 @@ function colorSheet() {
 	}
 }
 colorSheet();
+
+/*
+To Do:
+* Say you are on the first block,
+* in this state you are capable of moving 
+* Right or Down
+* If you pick right, you will flip through the arrays
+* Until the one in front of you is a wall
+* The same thing with down
+
+* Each cell shall contain a new property
+* called holds or object or item
+* the special ones will have something in their item
+* The rest would have nothing
+* When the item is picked that cell just lost their item
+* The bag has it now
+* Think about a jumping item that allows you to land on a random spot
+* Think about a view big item that gives you more view
+
+*/
