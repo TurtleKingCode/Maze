@@ -306,8 +306,9 @@ function colorSheet() {
 	}
 	// for (var c in cell) {
 		// c = cell[c];
-		sheet.cell(c[0], c[1]).changeType();
-	}
+		// sheet.cell(c[0], c[1]).changeType();
+	// }
 }
 colorSheet();
+console.log('orange');
 // console.table(sheet.p5Pos());
