@@ -2,8 +2,8 @@ class Sheet {
 	constructor (height, width) {
 		this.width = width;
 		this.height = height;
-		this.types = ['plain', 'road', 'wall', 'goal', 'special'];
-		this.colors = ['#ffffff', '#f56f42', '#000000', '#42f581', '#f542b6']
+		this.types = ['plain', 'road1', 'road2', 'wall', 'goal', 'special'];
+		this.colors = ['#ffffff', '#ff5722', '#f44336', '#000000', '#42f581', '#f542b6']
 		this.defaultColor = this.colors[0];
 		this.defaultType = this.types[0];
 		this.createSheet = function() {
@@ -276,8 +276,8 @@ function colorSheet() {
 		[5, 11, 3],
 		[7, 5, 7],
 		[9, 5, 7],
-		[9, 13, 2],
-		[11, 3, 11],
+		[9, 13, 3],
+		[11, 3, 13],
 		[13, 2, 2],
 		[13, 5, 9],
 		[15, 2, 10],
@@ -293,7 +293,7 @@ function colorSheet() {
 		[9, 4],
 		[13, 4],
 		[5, 8],
-		[14, 9],
+		[11, 6],
 		[13, 12]
 	]
 	for (var h in hor) {
@@ -304,11 +304,9 @@ function colorSheet() {
 		v = ver[v];
 		sheet.ver(v[0], v[1], v[2], 'length').changeType();
 	}
-	// for (var c in cell) {
-		// c = cell[c];
-		// sheet.cell(c[0], c[1]).changeType();
-	// }
+	for (var c in cell) {
+		c = cell[c];
+		sheet.cell(c[0], c[1]).changeType();
+	}
 }
 colorSheet();
-console.log('orange');
-// console.table(sheet.p5Pos());
