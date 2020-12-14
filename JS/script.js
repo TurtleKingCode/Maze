@@ -74,6 +74,7 @@ async function gameStart() {
 }
 async function start() {
   if (startGame) {
+    write("To Get Caught Up on Rules")
     write("Go to the RADICAL Repository behind this project.");
     write("https://github.com/TurtleKingCode/Maze");
     write("");
