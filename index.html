@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
-		<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
   </head>
   <body>
-		<div id="canvasHolder"></div>
-		<div id="console"></div>
-		<script src="JS/sheets.js"></script>
-		<script src="JS/script.js"></script>
-		<script src="JS/sketch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <textarea id="screen" readonly></textarea>
+    <form onsubmit="return false;">
+      <input type="text" id="console" autofocus="autofocus" autocomplete="off">
+    </form>
+    <div id="canvasHolder"></div>
+    <script src="JS/sheets.js"></script>
+    <script src="JS/sprite.js"></script>
+    <script src="JS/sketch.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="bigest.js"></script>
   </body>
 </html>
