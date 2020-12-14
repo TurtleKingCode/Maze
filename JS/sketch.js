@@ -42,6 +42,7 @@ function draw() {
 // var drawSheet = true;
 // var picked = sheet;
 var canvas;
+
 function setup() {
   mainCanvas = createCanvas(300, 300);
   mainCanvas.parent("canvasHolder");
@@ -57,7 +58,7 @@ function draw() {
   } else if (view === 'full') {
     fullView();
   }
-}//*/
+} //*/
 
 function fullView() {
   var picked = sheet;
@@ -90,10 +91,10 @@ function fiveView() {
       var c = row.indexOf(cell);
       fill(cell.color);
       noStroke();
-      var p5Position= {
-              x: (c + 1) ** 2 - c ** 2,
-              y: (r + 1) ** 2 - r ** 2
-            }
+      var p5Position = {
+        x: (c + 1) ** 2 - c ** 2,
+        y: (r + 1) ** 2 - r ** 2
+      }
       let wide = width / picked.width;
       let high = height / picked.height;
       rect((p5Position.x * wide) / 2, (p5Position.y * high) / 2, wide, high);
@@ -117,10 +118,10 @@ function threeView() {
       var c = row.indexOf(cell);
       fill(cell.color);
       noStroke();
-      var p5Position= {
-              x: (c + 1) ** 2 - c ** 2,
-              y: (r + 1) ** 2 - r ** 2
-            }
+      var p5Position = {
+        x: (c + 1) ** 2 - c ** 2,
+        y: (r + 1) ** 2 - r ** 2
+      }
       let wide = width / picked.width;
       let high = height / picked.height;
       rect((p5Position.x * wide) / 2, (p5Position.y * high) / 2, wide, high);

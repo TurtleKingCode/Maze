@@ -1,26 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
 
-  </head>
-  <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <textarea id="screen" readonly></textarea>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8" />
+
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+    <div class="snowflake">
+      ❅
+    </div>
+    <div class="snowflake">
+      ❆
+    </div>
+  </div>
+  <div id="console"><textarea id="screen" readonly></textarea>
     <form onsubmit="return false;">
-      <input type="text" id="console" autofocus="autofocus" autocomplete="off">
+      <input type="text" id="inputSection" autofocus="autofocus" autocomplete="off">
     </form>
-    <div id="canvasHolder"></div>
-    <script>
-      document.querySelector("textarea").readOnly = true;
-    </script>
-    <script src="JS/sheets.js"></script>
-    <script src="JS/sprite.js"></script>
-    <script src="JS/sketch.js"></script>
-    <script src="JS/script.js"></script>
-    <script src="bigest.js"></script>
-  </body>
+  </div>
+  <div id="canvasHolder"></div>
+  <script src="JS/sheets.js"></script>
+  <script src="JS/sprite.js"></script>
+  <script src="JS/sketch.js"></script>
+  <script src="JS/script.js"></script>
+  <script src="bigest.js"></script>
+</body>
+
 </html>

@@ -1,5 +1,5 @@
 /* Sheets */
-// https://ewscripps.brightspotcdn.com/dims4/default/c2559e9/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F74%2F98%2F0bea81ff4a32a34d4b55267fa52b%2Fenchant-christmas.jpg
+// https://ewcscripps.brightspotcdn.com/dims4/default/c2559e9/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F74%2F98%2F0bea81ff4a32a34d4b55267fa52b%2Fenchant-christmas.jpg
 var view = 3;
 // view = 5 or 'full'
 class Sheet {
@@ -32,7 +32,7 @@ class Sheet {
     ];
     this.defaultColor = this.colors[0];
     this.defaultType = this.types[0];
-    this.createSheet = function () {
+    this.createSheet = function() {
       var sheet = [];
       for (var r = 0; r < this.height; r++) {
         var row = [];
@@ -63,18 +63,18 @@ class Sheet {
       return sheet;
     };
     this.sheet = this.createSheet();
-    this.copy = function () {
+    this.copy = function() {
       var sheet = new Sheet(this.height, this.width, this.start);
       return sheet;
     };
-    this.cell = function (x, y, r = true) {
+    this.cell = function(x, y, r = true) {
       var c = new Sheet(1, 1);
       c.sheet[0][0] = r ? this.sheet[y - 1][x - 1] : this.sheet[y][x];
       return c;
     };
-    this.fake = function () {
+    this.fake = function() {
       var f = new Sheet(1, 1);
-      var cell =  {
+      var cell = {
         name: 'edge',
         type: 'edge',
         color: 'rgba(100, 100, 100, 1)',
@@ -97,7 +97,7 @@ class Sheet {
     this.start =
       start === undefined ? start : this.cell(start.x, start.y, false);
   }
-  name (prop = "") {
+  name(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.name);
@@ -138,7 +138,7 @@ class Sheet {
       });
     }
   };
-  type = function (prop = "") {
+  type = function(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.type);
@@ -158,7 +158,7 @@ class Sheet {
       });
     }
   };
-  item (prop = "") {
+  item(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.item);
@@ -178,7 +178,7 @@ class Sheet {
       });
     }
   };
-  points (prop = "") {
+  points(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.points);
@@ -198,7 +198,7 @@ class Sheet {
       });
     }
   };
-  p5Pos = function (prop = "") {
+  p5Pos = function(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.p5Pos);
@@ -218,7 +218,7 @@ class Sheet {
       });
     }
   };
-  inPos = function (prop = "") {
+  inPos = function(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.inPos);
@@ -238,7 +238,7 @@ class Sheet {
       });
     }
   };
-  readPos = function (prop = "") {
+  readPos = function(prop = "") {
     if (prop === "") {
       var table = this.sheet.map((x) => {
         var c = x.map((x) => x.readPos);
@@ -391,6 +391,7 @@ class Sheet {
     return column;
   }
 }
+
 function colorSheet() {
   sheet.start.changeType("start");
   sheet.start.name("The Start Cell");
@@ -448,7 +449,7 @@ function colorSheet() {
   // GOAL
   sheet.cell(14, 10).changeType("goal");
   sheet.cell(14, 12).changeType("goal");
-  
+
   for (var row in sheet.sheet) {
     for (var column in sheet.sheet[row]) {
       var c = sheet.sheet[row][column];
@@ -459,7 +460,10 @@ function colorSheet() {
     }
   }
 }
-var sheet = new Sheet(15, 15, { x: 1, y: 1 });
+var sheet = new Sheet(15, 15, {
+  x: 1,
+  y: 1
+});
 colorSheet();
 
 // module.exports = {
@@ -470,12 +474,13 @@ colorSheet();
 To Do:
 */
 
-var inputBox = $("#console");
+var inputBox = $("#inputSection");
+
 function getUserInput() {
   inputBox.val("");
   return new Promise((resolve, reject) => {
-    $("form").submit(function (e) {
-      const inputVal = $("#console").val();
+    $("form").submit(function(e) {
+      const inputVal = $("#inputSection").val();
       resolve(inputVal);
     });
   });

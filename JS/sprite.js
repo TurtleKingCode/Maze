@@ -16,9 +16,26 @@ class Character {
     this.bag = {
       inside: [],
       outside: [],
-      drone: { name: "MD-I", uses: "Infinite", hooked: true , id: 2, dis: "drone: ", },
-      drone2: { name: "MD-V", uses: 15, hooked: false , id: 3, dis: "drone: "},
-      drone3: { name: "MD-Ultra", uses: 1, hooked: false, id: 4 }
+      drone: {
+        name: "MD-I",
+        uses: "Infinite",
+        hooked: true,
+        id: 2,
+        dis: "drone: ",
+      },
+      drone2: {
+        name: "MD-V",
+        uses: 15,
+        hooked: false,
+        id: 3,
+        dis: "drone: "
+      },
+      drone3: {
+        name: "MD-Ultra",
+        uses: 1,
+        hooked: false,
+        id: 4
+      }
     };
   }
   cell(x, y, info = "data") {
@@ -118,30 +135,18 @@ class Character {
     switch (direction) {
       case "north":
         this.north(distance);
-        /*if (this.cell().item !== false) {
-          console.log(this.cell());
-        }*/
         view = 3;
         break;
       case "south":
         this.south(distance);
-        /*if (this.cell().item !== false) {
-          console.log(this.cell());
-        }*/
         view = 3;
         break;
       case "east":
         this.east(distance);
-        /*if (this.cell().item !== false) {
-          console.log(this.cell());
-        }*/
         view = 3;
         break;
       case "west":
         this.west(distance);
-        /*if (this.cell().item !== false) {
-          console.log(this.cell());
-        }*/
         view = 3;
         break;
       default:
@@ -151,7 +156,7 @@ class Character {
   }
   view(type) {
     if (type === "view more") {
-    var viewMore = sprite.bag[Object.keys(sprite.bag)[3]];
+      var viewMore = sprite.bag[Object.keys(sprite.bag)[3]];
       if (this.bag.inside.includes(viewMore)) {
         if (viewMore.uses <= 0) {
           write("................................")
@@ -180,7 +185,6 @@ class Character {
         list.push(i.dis + i.name);
       }
       list = list.join('\n')
-      console.log(this.bag.inside)
       write(list);
       write("................................")
       return;
@@ -214,6 +218,7 @@ class Character {
 }
 
 var sprite = new Character(sheet, undefined);
+
 function setBag() {
   sprite.bag.inside.push(sprite.bag.drone);
 }

@@ -20,14 +20,11 @@ var startGame;
 
 function ask(question) {
   write(question);
-  $("#console").val('');
+  $("#inputSection").val('');
   var inputVal;
   return new Promise((resolve, reject) => {
     $("form").submit(function(e) {
-      inputVal = $("#console").val();
-      // write(inputVal);
-      // write('-----------')
-      // console.log(inputVal);
+      inputVal = $("#inputSection").val();
       resolve(inputVal);
     });
   }).then(
@@ -49,7 +46,7 @@ async function gameStart() {
   write("But what matters the most is whether or not YOU are ready to play.");
   while (true) {
     startGame = await ask("Soo... Are You??? (yes, no) \n");
-    startGame  = startGame.clean();
+    startGame = startGame.clean();
     if (startGame === "yes") {
       startGame = true;
       break;
@@ -66,7 +63,7 @@ async function gameStart() {
   if (!startGame) {
     write("Welp! That's too bad!");
     write("👋 Bye! 👋");
-    $("#console").val("");
+    $("#inputSection").val("");
   } else if (startGame) {
     write("A-Right!!!");
     sprite.title = await ask("Now, Let's get your name...\n");
@@ -99,20 +96,19 @@ async function road() {
 
 async function item() {
   var newItem = sprite.bag[Object.keys(sprite.bag)[sprite.cell().item]];
-  if (sprite.bag.inside.includes(newItem)) {
-  } else {
-  write('....................................');
-  write('....................................');
-  sprite.bag.inside.push(newItem);
-  write('-----------NOW-----------')
-  sprite.check("inventory")
-  write('....................................');
-  write('....................................');
+  if (sprite.bag.inside.includes(newItem)) {} else {
+    write('....................................');
+    write('....................................');
+    sprite.bag.inside.push(newItem);
+    write('-----------NOW-----------')
+    sprite.check("inventory")
+    write('....................................');
+    write('....................................');
   }
 }
 
 async function goal() {
-  $('#console').val('');
+  $('#inputSection').val('');
   view = 'full';
   write('CONGRATS!!! YOU JUST COMPLETED THE MAZE!!');
   write(`Along the way, you gained ${sprite.points} points.`);
@@ -170,7 +166,7 @@ async function move(open) {
   }
 }
 
-async function writeLocation(s=false) {
+async function writeLocation(s = false) {
   var name = sprite.cell().name;
   var pos = sprite.cell().inPos;
   var what;
@@ -222,7 +218,7 @@ async function writeLocation(s=false) {
         write(`${what} ${dir},`);
       }
     }
-  move(openCells);
+    move(openCells);
   }
 }
 
@@ -248,10 +244,6 @@ async function cellCheck() {
 
 
 gameStart();
-// colorSheet();
-// cellCheck();
-// console.log(sheet.sheet[3][14])
-// sprite.north();
 
 
 
