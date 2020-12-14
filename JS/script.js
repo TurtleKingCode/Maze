@@ -66,37 +66,25 @@ async function gameStart() {
   if (!startGame) {
     write("Welp! That's too bad!");
     write("👋 Bye! 👋");
-    process.exit();
+    $("#console").val("");
   } else if (startGame) {
     write("A-Right!!!");
     sprite.title = await ask("Now, Let's get your name...\n");
     write(`Well ${sprite.title}, Get ready to go on a Little Adventure`);
-    write();
-    // cellCheck();
+    write("");
+    cellCheck();
   }
 }
 async function start() {
   if (startGame) {
-    write("Let's get you caught up...");
-    write("1. You are participating in a Maze Challenge");
-    write("2. The Maze is 15 by 15");
-    write("3. Each square on the Maze is a Cell");
-    write(
-      "4. At each step, you will be informed on your cell location on the Maze and on your surroundings"
-    );
-    write(
-      "5. Using this information you will input your decided direction to turn"
-    );
-    write('6. Accepted directions are ["north", "south", "east", "west"]');
-    write(
-      "7. For your convenience, you can input the first letter of each direction."
-    );
-    write('8. I other commands like ["pick up", ]')
+    write("Go to the RADICAL Repository behind this project.");
+    write("https://github.com/TurtleKingCode/Maze");
     write("");
     write("OKAY, with that out of the way, It's time to actually PLAY!!!");
-    write("");
+    write("................................................................")
     write("");
     startGame = false;
+    cellCheck();
   } else {
     writeLocation(true);
   }
@@ -110,13 +98,22 @@ async function road() {
 }
 
 async function item() {
-  console.log("We found an Item!!!");
-  
-  console.log(`${sprite.cell().item}`)
+  var newItem = sprite.bag[Object.keys(sprite.bag)[sprite.cell().item]];
+  if (sprite.bag.inside.includes(newItem)) {
+  } else {
+  write('....................................');
+  write('....................................');
+  sprite.bag.inside.push(newItem);
+  write('-----------NOW-----------')
+  sprite.check("inventory")
+  write('....................................');
+  write('....................................');
+  }
 }
 
 async function goal() {
   $('#console').val('');
+  view = 'full';
   write('CONGRATS!!! YOU JUST COMPLETED THE MAZE!!');
   write(`Along the way, you gained ${sprite.points} points.`);
   write(`Thank\'s for participating in this game ${sprite.name}!!!`);
@@ -126,25 +123,27 @@ async function goal() {
 
 async function move(open) {
   m = await ask("What are your commands?\n")
-  m = m.clean();
+  m = m.clean(2);
   var index;
   var longHand = [
     "north",
     "south",
     "east",
     "west",
-    "look",
-    "look big",
-    "inventory"
+    "view",
+    "view more",
+    "inventory",
+    "points"
   ];
   var shortHand = [
     "n",
     "s",
     "e",
     "w",
-    "l",
-    "lb",
-    'i'
+    "v",
+    "vm",
+    'i',
+    'p'
   ];
   if (shortHand.includes(m) || longHand.includes(m)) {
     index = shortHand.includes(m) ? shortHand.indexOf(m) : longHand.indexOf(m);
@@ -160,6 +159,7 @@ async function move(open) {
       }
     } else {
       sprite.action(real);
+      cellCheck();
     }
   } else {
     write("");
@@ -226,7 +226,7 @@ async function writeLocation(s=false) {
   }
 }
 
-async function cellCheck(location) {
+async function cellCheck() {
   var type = sprite.cell().type;
   switch (type) {
     case "start":
@@ -247,9 +247,9 @@ async function cellCheck(location) {
 
 
 
-// gameStart();
+gameStart();
 // colorSheet();
-cellCheck();
+// cellCheck();
 // console.log(sheet.sheet[3][14])
 // sprite.north();
 
@@ -259,11 +259,12 @@ cellCheck();
 
 /*
 * Complete CSS <= Mandatory
-* Dropped Item Functionality <= Mandatory
+* Complete Hookup <= Finished
+* Dropped Item Functionality <= Finished
 * Point System Functionality <= Finished
-* Looking View Functionality <= Mandatory-ish
+* Looking View Functionality <= Finished
 * Reached Goal Functionality <= Finished
-* Moving Functionality <= Almost Done
+* Moving Functionality <= Finished
 
 check out why your input get's inputted multiple times
 

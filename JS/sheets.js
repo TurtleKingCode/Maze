@@ -1,5 +1,7 @@
 /* Sheets */
 // https://ewscripps.brightspotcdn.com/dims4/default/c2559e9/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F74%2F98%2F0bea81ff4a32a34d4b55267fa52b%2Fenchant-christmas.jpg
+var view = 3;
+// view = 5 or 'full'
 class Sheet {
   constructor(height, width, start = undefined) {
     this.width = width;

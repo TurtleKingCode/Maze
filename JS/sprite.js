@@ -16,10 +16,9 @@ class Character {
     this.bag = {
       inside: [],
       outside: [],
-      drone: { name: "MD-I", uses: "Infinite", hooked: true , id: 2 },
-      drone2: { name: "MD-V", uses: 15, hooked: false , id: 3},
-      drone3: { name: "MD-Ultra", uses: 1, hooked: false, id: 4 },
-      points: this.points
+      drone: { name: "MD-I", uses: "Infinite", hooked: true , id: 2, dis: "drone: ", },
+      drone2: { name: "MD-V", uses: 15, hooked: false , id: 3, dis: "drone: "},
+      drone3: { name: "MD-Ultra", uses: 1, hooked: false, id: 4 }
     };
   }
   cell(x, y, info = "data") {
@@ -122,40 +121,68 @@ class Character {
         /*if (this.cell().item !== false) {
           console.log(this.cell());
         }*/
+        view = 3;
         break;
       case "south":
         this.south(distance);
         /*if (this.cell().item !== false) {
           console.log(this.cell());
         }*/
+        view = 3;
         break;
       case "east":
         this.east(distance);
         /*if (this.cell().item !== false) {
           console.log(this.cell());
         }*/
+        view = 3;
         break;
       case "west":
         this.west(distance);
         /*if (this.cell().item !== false) {
           console.log(this.cell());
         }*/
+        view = 3;
         break;
       default:
+        view = 3;
         break;
     }
   }
-  look(type) {
-    if (type === "look big") {
-      console.log("look at 5 x 5");
-    } else {
-      console.log("look at 3 x 3");
+  view(type) {
+    if (type === "view more") {
+    var viewMore = sprite.bag[Object.keys(sprite.bag)[3]];
+      if (this.bag.inside.includes(viewMore)) {
+        if (viewMore.uses <= 0) {
+          write("................................")
+          write("You have used up all of your uses of this drone.")
+          write("................................")
+        } else {
+          view = 5;
+          viewMore.uses--;
+        }
+      } else {
+        write("................................")
+        write("You do not have the special drone required to see that far.")
+        write("................................")
+      }
+    } else if (type === "view") {
+      view = 3;
     }
   }
   check(id) {
     if (id === "inventory") {
-      console.log(this.bag);
-      cellCheck(false);
+      var list = [];
+      write("................................")
+      write("You have in you bag: ")
+      for (var i in this.bag.inside) {
+        i = this.bag.inside[i];
+        list.push(i.dis + i.name);
+      }
+      list = list.join('\n')
+      console.log(this.bag.inside)
+      write(list);
+      write("................................")
       return;
     } else {
       return;
@@ -170,12 +197,17 @@ class Character {
         write(`You can't go ${id}, there's a wall there`)
         return false;
       }
-    } else if (["look", "look big"].includes(id)) {
-      this.look(id);
+    } else if (["view", "view more"].includes(id)) {
+      this.view(id);
       return false;
     } else if (["inventory"].includes(id)) {
       this.check(id);
-      return true;
+      return false;
+    } else if (["points"].includes(id)) {
+      write('.............................')
+      write(`You have ${sprite.points} Points so far`);
+      write('.............................')
+      return false;
     }
     return;
   }
@@ -184,7 +216,6 @@ class Character {
 var sprite = new Character(sheet, undefined);
 function setBag() {
   sprite.bag.inside.push(sprite.bag.drone);
-  sprite.bag.inside.push(sprite.bag.points);  
 }
 
 setBag();
